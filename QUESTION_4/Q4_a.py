@@ -16,8 +16,6 @@ for atoms in structures:
 all_species = sorted(all_species)
 
 
-
-
 soap = SOAP(
     species = ["Al", "Ca", "Mg"],
     r_cut = 5.0,
@@ -26,13 +24,10 @@ soap = SOAP(
     sparse = False
 )
 
-X = np.array([soap.create(s).mean(axis = 0) for s in structures])
+X = np.array([soap.create(s).mean(axis = 0) for s in structures[:110000]])
 
 kpca = KernelPCA(n_components = 2, kernel = "linear")
 X_kpca = kpca.fit_transform(X)
-
-print(structures[0])
-print(soap.create(structures[0]).mean(axis=0))
 
 plt.figure(figsize = (6,5))
 plt.scatter(X_kpca[:, 0], X_kpca[:, 1], s= 10)
