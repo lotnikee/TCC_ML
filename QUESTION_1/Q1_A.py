@@ -27,7 +27,7 @@ sigma_noise = 0.1                                                           ### 
 epsilon_n = np.random.normal(loc = 0, scale = sigma_noise, size = n_train)  ### Adding the noise to each training set datapoint 
 y_n = f_x + epsilon_n                                                       ### y values of the training set is now defined as the original function + error in the training dataset
 
-### Optional: Visualise the training data with a plot
+### Visualise the training data with a plot
 plt.figure(figsize = (10, 5))
 plt.scatter(x = x_n, y = y_n, label = "training data")                      ### Scatterplot of the training set datapoints with added noise
 plt.plot(x_n, f_x, color = "red", label = "f(x)")                           ### Lineplot of the noise-free function
@@ -69,7 +69,7 @@ x_test = np.linspace(start = 0, stop = (x_end + 1), num = n_test)           ### 
 ### Predict the mean and variance at new test locations 
 y_mean, y_std = gpr.predict(x_test.reshape(-1, 1), return_std = True)     
 
-### Optional: Visualise the predicted values 
+### Visualise the predicted values 
 plt.figure(figsize = (10, 5))
 plt.plot(x_n, f_x, 'r-', label = "True function $f(x)$")
 plt.scatter(x_n, y_n, color = "k", s = 20, label = "Training Data")
